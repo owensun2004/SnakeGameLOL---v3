@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game - Playing</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="langSelector">
+      <label for="lang-switch">
+        <span lang="es">Lange:</span>
+        <span lang="en">Language:</span>
+        <span lang="z">语言:</span>
+      </label>
+      <select id="lang-switch">
+        <option value="en">English</option>
+        <option value="es">Français</option>
+        <option value="z">中文</option>
+      </select>
+    </div>
+    <div class="playing">
+      <button id="back" onclick="window.location.href = 'home.html';">
+        <i class="fa fa-angle-double-left"></i>
+        <span lang="es">&#160Retourner</span>
+        <span lang="en">&#160Back</span>
+        <span lang="z">&#160返回</span>
+      </button>
+      <button id="pause" onclick="pause()">
+        <span lang="es">Pause</span>
+        <span lang="en">Pause</span>
+        <span lang="z">暂停</span>
+        <i class="fa fa-pause"></i></button>
+      <button id="stats" onclick="openPopUp()">
+        <span lang="es">Test</span>
+        <span lang="en">Open End Game Stats</span>
+        <span lang="z">TEst</span> 
+        <i class="fa fa-file-o"></i></button>
+      <div class="popup" id="popup">
+        <div class="header">
+          <h2 id="tit">Game Over !</h2>
+          <button id="close-but" onclick="XclosePopUp()">&times</button>
+        </div>
+        <div class="scoreboard">
+          <p id="skore">Final Score:</p>
+          <p id="point2"></p>
+        </div>
+        <div id="somestat">
+          <p id="statTitle">More Stats:
+            <span id="dots">...</span>
+            <div id="statistics">
+            <span id="more">
+              <p id="dist"></p>
+              <p id="l"></p>
+              <p id="r"></p>
+              <p id="u"></p>
+              <p id="d"></p>
+            </span>
+            </div>
+          </p>
+          <button onclick="expand()" id="showmore">Show More</button>
+        </div>
+        
+        <div class="footer">
+          <button id="leader" onclick="stl()">
+            Submit to Leaderboards &#160
+            <i class="fa fa-bar-chart"></i>
+          </button>
+          <button class="restart" onclick="reset()">
+            Retry &#160<i class="fa fa-repeat"></i>
+          </button>
+        </div>
+      </div>
+      <canvas id="board"></canvas>
+      <div id="scoring">
+        <p id="scoretitle">
+        <span lang="es">Score:</span>
+        <span lang="en">Score:</span>
+        <span lang="z">分数:</span></p>
+        <p id="point"></p></div>
+      
+    </div>
+    <div id="overlay"></div>
+    <script src="homescript.js"></script>
+    <script src="script.js"></script>
+    
+  </body>
+</html>

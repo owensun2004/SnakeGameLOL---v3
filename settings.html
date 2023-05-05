@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game - Settings</title>
+    <link rel="stylesheet" href="setstyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <button id="back" onclick="window.location.href = 'home.html';">
+        <i class="fa fa-angle-double-left"></i>&#160Back
+      </button>
+    <h1>Settings</h1>
+    <button id="lang" onclick="window.location.href = 'languages.html';">Language</button>
+    <p>Change Snake Speed</p>
+
+    <div class="slidecontainer">
+        <input type="range" oninput="changeSpeed()" min="500" max="950" value="700" class="slider" id="myRange">
+    <p>Speed: <span id="demo"></span></p>
+    </div>
+    <script src="setscript.js"></script>
+  </body>
+</html>
