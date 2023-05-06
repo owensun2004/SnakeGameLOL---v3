@@ -39,6 +39,11 @@ var total=0;
 
 var isPause=0;
 
+
+var setSpeed=getCookie("speed");
+var setLang=getCookie("lang");
+console.log(setSpeed);
+console.log(setLang);
  
 window.onload = function () {
     // Set board height and width
@@ -51,14 +56,26 @@ window.onload = function () {
     placeFood();
     document.addEventListener("keyup", changeDirection);  //for movements
     // Set snake speed
-    game = setInterval(update, 100);
+    game = setInterval(update, setSpeed);
 }
 
 function pause(){
     isPause=1;
-    title.innerHTML="Game Paused";
-    popupScore.innerHTML="Current Score: ";
-    submitLeaderBoard.innerHTML="Continue Playing";
+    //Probably can clean this up with better code LOL, Paco unit 6 repetitive problem shown:
+    if(setLang=="0"){
+        title.innerHTML="Game Paused";
+        popupScore.innerHTML="Current Score: ";
+        submitLeaderBoard.innerHTML="Continue Playing";
+    }else if(setLang=="1"){
+        title.innerHTML="Jeu en Pause";
+        popupScore.innerHTML="Score Actuel: ";
+        submitLeaderBoard.innerHTML="Continue de jouer";
+    }else if(setLang=="2"){
+        title.innerHTML="游戏暂停";
+        popupScore.innerHTML="目前分数: ";
+        submitLeaderBoard.innerHTML="继续玩";
+    }
+    
     submitLeaderBoard.classList.add('cont');
     displayScore();
     document.querySelector("#point2").innerHTML = score;
@@ -67,9 +84,20 @@ function pause(){
 }
 
 function resetWords(){
-    title.innerHTML="Game Over !";
-    popupScore.innerHTML="Final Score:";
-    submitLeaderBoard.innerHTML="Submit to Leaderboards";
+    //same repetitive problem here
+    if(setLang=="0"){
+        title.innerHTML="Game Over !";
+        popupScore.innerHTML="Final Score: ";
+        submitLeaderBoard.innerHTML="Submit to Leaderboards";
+    }else if(setLang=="1"){
+        title.innerHTML="Jeu Terminé !";
+        popupScore.innerHTML="Score Finale: ";
+        submitLeaderBoard.innerHTML="Soumettre aux classements";
+    }else if(setLang=="2"){
+        title.innerHTML="游戏结束 !";
+        popupScore.innerHTML="最终分数: ";
+        submitLeaderBoard.innerHTML="提交到排行榜";
+    }
     submitLeaderBoard.classList.remove('cont');
 }
 
@@ -94,17 +122,33 @@ function reset(){
     document.querySelector("#point").innerHTML = score;
     clearInterval(game);
     placeFood();
-    game=setInterval(update, 100);
+    game=setInterval(update, setSpeed);
     closePopUp();
     
 }
 
 function displayScore(){
-    document.querySelector("#dist").innerHTML="Total distance traveled: "+total;
+    //same repetitive problem here
+    if(setLang=="0"){
+        document.querySelector("#dist").innerHTML="Total distance traveled: "+total;
         document.querySelector("#l").innerHTML="Total left arrow pressed: "+countleft;
         document.querySelector("#r").innerHTML="Total right arrow pressed: "+countright;
         document.querySelector("#d").innerHTML="Total down arrow pressed: "+countdown;
         document.querySelector("#u").innerHTML="Total up arrow pressed: "+countup;
+    }else if(setLang=="1"){
+        document.querySelector("#dist").innerHTML="Distance totale parcourue: "+total;
+        document.querySelector("#l").innerHTML="Total flèche gauche pressée: "+countleft;
+        document.querySelector("#r").innerHTML="Total flèche droite pressée: "+countright;
+        document.querySelector("#d").innerHTML="Total flèche vers le bas pressée: "+countdown;
+        document.querySelector("#u").innerHTML="Total flèche vers le haut pressée: "+countup;
+    }else if(setLang=="2"){
+        document.querySelector("#dist").innerHTML="总行驶距离: "+total;
+        document.querySelector("#l").innerHTML="左箭头按下总数: "+countleft;
+        document.querySelector("#r").innerHTML="右箭头按下总数: "+countright;
+        document.querySelector("#d").innerHTML="下箭头按下总数: "+countdown;
+        document.querySelector("#u").innerHTML="上箭头按下总数: "+countup;
+    }
+    
 }
  
 function update() {
@@ -241,7 +285,7 @@ function XclosePopUp(){
         bu.classList.add('act');
     }else{
         isPause=0;
-        game=setInterval(update, 100);
+        game=setInterval(update, setSpeed);
         resetWords();
     }
     
@@ -262,13 +306,41 @@ function expand(){
     var expbut=document.getElementById("showmore");
 
     if(dot.style.display === "none"){
-        expbut.innerHTML="Show More";
+        if(setLang=="0"){
+            expbut.innerHTML="Show More";
+        }else if(setLang=="1"){
+            expbut.innerHTML="Montre Plus";
+        }else if(setLang=="2"){
+            expbut.innerHTML="展开";
+        }
         more.style.display="none";
         dot.style.display="inline";
     }else{
-        expbut.innerHTML="Show Less";
+        if(setLang=="0"){
+            expbut.innerHTML="Show Less";
+        }else if(setLang=="1"){
+            expbut.innerHTML="Montre moins";
+        }else if(setLang=="2"){
+            expbut.innerHTML="收回";
+        }
         more.style.display="inline";
         dot.style.display="none";
     }
 }
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 

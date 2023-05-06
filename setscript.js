@@ -2,15 +2,14 @@ var slider=  document.getElementById("myRange");
 var output= document.getElementById("demo");
 
 var snakeSpeed=0;
+//document.cookie="speed=0;";
 function changeSpeed(){
-  slider=  document.getElementById("myRange");
-  output = document.getElementById("demo");
   output.innerHTML = slider.value;
   snakeSpeed=1000-output.innerHTML;
-  console.log(snakeSpeed);
+  document.cookie="speed="+snakeSpeed+";";
   
 }
-console.log("after:"+snakeSpeed);
+console.log(document.cookie);
 /*
 slider.oninput = function() {
   output.innerHTML = this.value;

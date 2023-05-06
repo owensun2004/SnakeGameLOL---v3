@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,18 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head>
   <body>
-    <div id="langSelector">
-      <label for="lang-switch">
-        <span lang="es">Lange:</span>
-        <span lang="en">Language:</span>
-        <span lang="z">语言:</span>
-      </label>
-      <select id="lang-switch">
-        <option value="en">English</option>
-        <option value="es">Français</option>
-        <option value="z">中文</option>
-      </select>
-    </div>
     <div class="playing">
       <button id="back" onclick="window.location.href = 'home.html';">
         <i class="fa fa-angle-double-left"></i>
@@ -38,21 +26,32 @@
         <span lang="z">暂停</span>
         <i class="fa fa-pause"></i></button>
       <button id="stats" onclick="openPopUp()">
-        <span lang="es">Test</span>
+        <span lang="es">Ouvert les Statistics de Jeu</span>
         <span lang="en">Open End Game Stats</span>
-        <span lang="z">TEst</span> 
+        <span lang="z">打开游戏结果</span> 
         <i class="fa fa-file-o"></i></button>
       <div class="popup" id="popup">
         <div class="header">
-          <h2 id="tit">Game Over !</h2>
+          <h2 id="tit">
+            <span lang="es">Jeu Terminé !</span>
+            <span lang="en">Game Over !</span>
+            <span lang="z">游戏结束 !</span>
+          </h2>
           <button id="close-but" onclick="XclosePopUp()">&times</button>
         </div>
         <div class="scoreboard">
-          <p id="skore">Final Score:</p>
+          <p id="skore">
+            <span lang="es">Score Finale: </span>
+            <span lang="en">Final Score:</span>
+            <span lang="z">最终分数:</span>
+          </p>
           <p id="point2"></p>
         </div>
         <div id="somestat">
-          <p id="statTitle">More Stats:
+          <p id="statTitle">
+            <span lang="es">Plus de Statistiques: </span>
+          <span lang="en">More Stats:</span>
+          <span lang="z">更多游戏统计:</span>
             <span id="dots">...</span>
             <div id="statistics">
             <span id="more">
@@ -64,16 +63,25 @@
             </span>
             </div>
           </p>
-          <button onclick="expand()" id="showmore">Show More</button>
+          <button onclick="expand()" id="showmore">
+            <span lang="es">Montre Plus </span>
+            <span lang="en">Show More</span>
+            <span lang="z">展开</span>
+          </button>
         </div>
         
         <div class="footer">
           <button id="leader" onclick="stl()">
-            Submit to Leaderboards &#160
+            <span lang="es">Soumettre aux classements &#160</span>
+            <span lang="en">Submit to Leaderboards &#160</span>
+            <span lang="z">提交到排行榜 &#160</span>
             <i class="fa fa-bar-chart"></i>
           </button>
           <button class="restart" onclick="reset()">
-            Retry &#160<i class="fa fa-repeat"></i>
+            <span lang="es">Recommencer &#160</span>
+            <span lang="en">Retry &#160</span>
+            <span lang="z">重试 &#160</span>
+            <i class="fa fa-repeat"></i>
           </button>
         </div>
       </div>
@@ -89,6 +97,5 @@
     <div id="overlay"></div>
     <script src="homescript.js"></script>
     <script src="script.js"></script>
-    
   </body>
 </html>
